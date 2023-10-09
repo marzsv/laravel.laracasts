@@ -20,6 +20,7 @@ class PostFactory extends Factory
             'slug' => $this->faker->unique()->slug(),
             'title' => $this->faker->sentence(),
             'body' => $this->faker->paragraphs(3, true),
+            'excerpt' => $this->faker->paragraph(),
         ];
     }
 }

@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
+
+    public function author()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function category()
+    {
+        return $this->hasOne(Category::class);
+    }
 }

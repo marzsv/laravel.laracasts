@@ -1,10 +1,8 @@
-<!DOCTYPE html>
+<x-layout>
+    <article>
+        <h1>{{ $post->title }}</h1>
+        <p>{{ $post->body }}</p>
+    </article>
 
-<link rel="stylesheet" href="/styles.css">
-
-<article>
-    <h1>{{ $post->title }}</h1>
-    <p>{{ $post->body }}</p>
-</article>
-
-<a href="{{ route('post.index') }}">Go back</a>
+    <a href="{{ route('post.index') }}">Go back</a>
+</x-layout>
