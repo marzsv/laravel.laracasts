@@ -9,6 +9,15 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'slug',
+        'excerpt',
+        'body',
+        'category_id',
+        'author_id',
+    ];
+
     public function author()
     {
         return $this->belongsTo(User::class);
@@ -16,6 +25,6 @@ class Post extends Model
 
     public function category()
     {
-        return $this->hasOne(Category::class);
+        return $this->belongsTo(Category::class);
     }
 }

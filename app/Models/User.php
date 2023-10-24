@@ -52,4 +52,9 @@ class User extends Authenticatable
             Mail::to($user)->send(new \App\Mail\WelcomeMail($user));
         });
     }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'author_id');
+    }
 }

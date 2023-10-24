@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [Controllers\PostController::class, 'index'])->name('post.index');
 Route::get('/post/{post:slug}', [Controllers\PostController::class, 'show'])->name('post.show');
+Route::get('/category/{category:slug}', [Controllers\PostController::class, 'category'])->name('post.category');
+Route::get('/author/{author:username}', [Controllers\PostController::class, 'author'])->name('post.author');
 
 Route::get('welcome-mail', function () {
     return new \App\Mail\WelcomeMail(\App\Models\User::first());
