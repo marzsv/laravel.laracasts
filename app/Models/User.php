@@ -44,6 +44,11 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     public static function boot()
     {
         parent::boot();

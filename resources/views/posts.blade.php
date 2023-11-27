@@ -1,15 +1,18 @@
 <x-layout>
-    <h1>Posts</h1>
+    @include ('_header')
+    <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
+        @if ($posts->count())
 
-    @foreach ($posts as $post)
-    <article>
-        <h1>
-            <a href="{{ route('post.show', ['post' => $post]) }}">{{ $post->title }}</a>
-        </h1>
+        <!-- only display the featured post when not in a category page -->
+        @if (!isset($currentCategory))
+        <x-featured-post-card :post="$posts->first()" />
+        @endif
 
-        <x-author-and-category :post="$post"></x-author-and-category>
-
-        <p>{{ $post->body }}</p>
-    </article>
-    @endforeach
+        <div class="lg:grid lg:grid-cols-6">
+            @foreach ($posts->skip(1) as $post)
+            <x-post-card :post="$post" class="{{ $loop->iteration < 3 ? 'col-span-3' : 'col-span-2' }}" />
+            @endforeach
+        </div>
+        @endif
+    </main>
 </x-layout>

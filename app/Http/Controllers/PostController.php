@@ -11,7 +11,9 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::with('category', 'author')->latest()->get();
-        return view('posts', compact('posts'));
+        $categories = Category::all();
+
+        return view('posts', compact('posts', 'categories'));
     }
 
     public function show(string $slug)
@@ -28,7 +30,11 @@ class PostController extends Controller
     public function category(Category $category)
     {
         $posts = $category->posts()->with('category', 'author')->latest()->get();
-        return view('posts', compact('posts'));
+        $categories = Category::all();
+        $currentCategory = $category;
+
+
+        return view('posts', compact('posts', 'categories', 'currentCategory'));
     }
 
     public function author(User $author)
