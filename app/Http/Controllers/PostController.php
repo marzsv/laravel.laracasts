@@ -49,8 +49,6 @@ class PostController extends Controller
             ->latest()
             ->get();
 
-        clock($posts, $category);
-
         return view('posts', [
             'posts' => $posts,
             'categories' => Category::all(),
